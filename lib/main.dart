@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_coffee/datamanager.dart';
 import 'package:flutter_coffee/pages/menupage.dart';
 import 'package:flutter_coffee/pages/offerspage.dart';
 import 'package:flutter_coffee/pages/orderspage.dart';
@@ -34,21 +35,28 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var dataManager = DataManager();
   var selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    Widget currentWidgetPage = const MenuPage();
+    Widget currentWidgetPage = MenuPage(
+      dataManager: dataManager,
+    );
 
     switch (selectedIndex) {
       case 0:
-        currentWidgetPage = const MenuPage();
+        currentWidgetPage = MenuPage(
+          dataManager: dataManager,
+        );
         break;
       case 1:
         currentWidgetPage = const OffersPage();
         break;
       case 2:
-        currentWidgetPage = const OrdersPage();
+        currentWidgetPage = OrderPage(
+          dataManager: dataManager,
+        );
         break;
       default:
     }
